@@ -2327,3 +2327,6 @@ console.warn: LoginRecipes: "Falling back to a synchronous message for: https://
 console.warn: LoginRecipes: "Falling back to a synchronous message for: https://selenium.dunossauro.live."
 console.warn: LoginRecipes: "Falling back to a synchronous message for: https://selenium.dunossauro.live."
 console.warn: LoginRecipes: "Falling back to a synchronous message for: https://selenium.dunossauro.live."
+console.error: "update.locale" " file doesn't exist in either the application or GRE directories"
+1682624620051	Marionette	INFO	Stopped listening on port 35899
+1682624622232	Marionette	INFO	Stopped listening on port 42233

@@ -53,7 +53,7 @@ class Credenciais(SauceDemoPage):
     def __init__(self) -> None:
         super().__init__()
         self.usuarios = (By.XPATH, '//*[@id="login_credentials"]/br')
-
+        pagina.driver.find_element(By.ID, "login_credentials").text
     def get_usuarios(self):
         string = pagina.driver.find_element(By.ID, "login_credentials").text
         vetor = string.split('\n')[1:]
@@ -62,8 +62,7 @@ class Credenciais(SauceDemoPage):
     def get_senhas(self):
         string = pagina.driver.find_element(By.ID, "login_credentials").text
         vetor = string.split('\n')[1:]
-        senhas = [item.split(": ")[-1] for item in vetor]
-        return senhas
+        return vetor
 
 
 

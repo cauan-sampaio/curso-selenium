@@ -8,7 +8,7 @@ class SeleniumPage:
         self.webdriver = webdriver.Chrome()
 
     def encontrar_elemento(self, locator):
-        return self.driver.find_element(*locator)
+        return self.webdriver.find_element(*locator)
     
     def escrever(self, locator, str):
         self.encontrar_elemento(locator).send_keys(str)
@@ -49,38 +49,32 @@ class CaixaLogin(SauceDemoPage):
         self.escrever_senha(senha_user)
         self.submit()
 
-class Credenciais(SauceDemoPage):
+class Credenciais(CaixaLogin):
     def __init__(self) -> None:
         super().__init__()
-        self.usuarios = (By.XPATH, '//*[@id="login_credentials"]/br')
-        pagina.driver.find_element(By.ID, "login_credentials").text
+        self.usuarios = (By.ID, "login_credentials")
+        self.senhas = (By.CLASS_NAME, "login_password")
+
     def get_usuarios(self):
-        string = pagina.driver.find_element(By.ID, "login_credentials").text
+        string = self.encontrar_elemento(self.usuarios).text
+        # string = pagina.driver.find_element(By.ID, "login_credentials").text
         vetor = string.split('\n')[1:]
         return vetor
-
+    
     def get_senhas(self):
-        string = pagina.driver.find_element(By.ID, "login_credentials").text
+        string = self.encontrar_elemento(self.senhas).text
         vetor = string.split('\n')[1:]
         return vetor
 
-
-
-
-pagina = CaixaLogin()
+pagina = Credenciais()
 pagina.entrar()
-print(pagina.get_titulo())
-credenciais = Credenciais()
-usuarios = credenciais.get_usuarios()
-senhas = credenciais.get_senhas()
+sleep(3)
 
-for usuario, senha in zip(usuarios, senhas):
-    print("Usuário:", usuario)
-    print("Senha:", senha)
-    print("-------------------")
+print(pagina.get_titulo())
+print(pagina.get_usuarios())
+print(pagina.get_senhas())
 
 pagina.logar('standard_user', 'secret_sauce')
-
 
 
 sleep(5)

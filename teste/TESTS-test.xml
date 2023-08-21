@@ -1,0 +1,18 @@
+<testsuite name="test.Login" tests="1" errors="0" failures="0" skipped="0" time="21.219389" timestamp="2023-08-18T15:32:14.769088" hostname="BL3-LATIM-27"><testcase classname="test.Login" name="Fazer login na conta" status="passed" time="21.219389"><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario: Fazer login na conta
+    Given Que eu esteja na página ... passed in 12.013s
+    When Quando eu clickar nos inputs de user-name e senha ... passed in 6.079s
+      """
+      {
+          "nome": "cauan",
+          "senha":"123"
+      }
+      """
+    Then O usuário poderá logar! ... passed in 3.127s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>
